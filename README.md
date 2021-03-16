@@ -1,3 +1,7 @@
-# test-web-service-backend
-test web service project backend with spring boot
-test
+# Test-web-service-backend
+  - practice web service with spring boot and a little bit frontend techs
+
+## Learning
+  - mybatis
+  - servlet
+  - filite
