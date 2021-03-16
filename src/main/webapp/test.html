@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<style>
+  .testcss1 {
+    font-family: 'helvetica neue', helvetica, sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-align: center;
+    border: 2px solid rgba(0, 0, 200, 0.6);
+    background: rgba(0, 0, 200, 0.3);
+    color: rgba(0, 0, 200, 0.6);
+    box-shadow: 1px 1px 2px rgba(0, 0, 200, 0.4);
+    border-radius: 10px;
+    padding: 3px 10px;
+    display: inline-block;
+    cursor: pointer;
+  }
+</style>
+
+<body>
+  <h1 id="a1">AAAAAA</h1>
+  <p id="a2" class="testcss1">Player 1: Chris</p><br>
+  <script>
+    // (function () {
+    //   document.getElementById('a1').innerHTML
+    // }());
+    // (function () {
+    //   fetch("http://localhost:8080/test", {
+    //     method: 'GET',
+    //     // headers: {
+    //     //   'content-type': 'application/json'
+    //     // },
+    //   })
+    //     .then(function (response) {
+    //       //處理 response
+    //       console.log('success');
+    //       console.log(response);
+    //       console.log(response.body);
+    //       // response.text().then(text => {
+    //       //   console.log(JSON.parse(text));
+    //       // });
+    //       return response.json();
+    //     }).then(function (json) {
+    //       console.log(json);
+    //     }).catch(function (err) {
+    //       // Error :(
+    //       console.log('fail');
+    //     });
+    // }());
+
+    const para2 = document.querySelector('h1');
+    const para = document.querySelector('p');
+    var timeoutID;
+
+    // arrow function test
+    para2.addEventListener('click', () => {
+      console.log('arrow function test');
+      console.log(`timeoutID = ${timeoutID}`);
+      timeoutID = setInterval(() => {
+        console.log('interval test')
+      }, 1000);
+
+      console.log(`timeoutID = ${timeoutID}`);
+    });
+
+    para.addEventListener('click', updateName);
+
+    function update() {
+      para2.innerHTML = '<span>one</span><span>two</span>';
+      console.log(a);
+    }
+
+    function updateName() {
+      console.log(`timeoutID = ${timeoutID}`);
+      clearInterval(timeoutID);
+      var a = 'bbb';
+      console.log(a);
+    }
+  </script>
+  <!--
+  <script src="./test.js">
+    /*
+    const para2 = document.querySelector('h1');
+    const para = document.querySelector('p');
+    para2.addEventListener('click', update);
+
+    para.addEventListener('click', updateName);
+    function update() {
+      para.textContent = 'Player 1: ' + para2.textContent;
+    }
+    function updateName() {
+      let name = prompt('Enter a new name');
+      para.textContent = 'Player 1: ' + name;
+    }
+    */
+  </script>
+-->
+</body>
+
+</html>
