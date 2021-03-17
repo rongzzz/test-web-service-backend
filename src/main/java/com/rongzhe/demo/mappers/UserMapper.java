@@ -11,7 +11,7 @@ public interface UserMapper {
 
 	List<UserDAO> getAll();
 
-//	UserDao getOne(Long id);
+	// UserDao getOne(Long id);
 
 	UserDAO getOneByAccount(String account);
 
