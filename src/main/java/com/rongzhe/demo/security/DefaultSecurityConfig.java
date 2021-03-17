@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.rongzhe.demo.mappers.UserMapper;
@@ -22,10 +24,24 @@ public class DefaultSecurityConfig extends WebSecurityConfigurerAdapter {
 	UserDetailsService userDetailsService;
 	@Autowired
 	PasswordEncoder passwordEncoder;
+	@Autowired
+	AuthenticationSuccessHandler authenticationSuccessHandler;
+	@Autowired
+	AuthenticationFailureHandler authenticationFailureHandler;
 
 	@Bean
 	protected PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	protected LoginAuthenticationFilter loginAuthenticationFilter() throws Exception {
+		final LoginAuthenticationFilter filter = new LoginAuthenticationFilter();
+		filter.setAuthenticationManager(authenticationManagerBean());
+		filter.setAuthenticationSuccessHandler(authenticationSuccessHandler);
+		filter.setAuthenticationFailureHandler(authenticationFailureHandler);
+		filter.setFilterProcessesUrl("/login");
+		return filter;
 	}
 
 	@Override
@@ -45,16 +61,6 @@ public class DefaultSecurityConfig extends WebSecurityConfigurerAdapter {
 				.logoutSuccessHandler(new LogoutSuccessHandlerImpl()).and().csrf().disable();
 		// TODO
 		// http.authorizeRequests().antMatchers("").hasRole("");
-	}
-
-	@Bean
-	LoginAuthenticationFilter loginAuthenticationFilter() throws Exception {
-		final LoginAuthenticationFilter filter = new LoginAuthenticationFilter();
-		filter.setAuthenticationManager(authenticationManagerBean());
-		filter.setAuthenticationSuccessHandler(new AuthenticationSuccessHandlerImpl());
-		filter.setAuthenticationFailureHandler(new AuthenticationFailureHandlerImpl());
-		filter.setFilterProcessesUrl("/login");
-		return filter;
 	}
 
 }

@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Service
 public class AuthenticationFailureHandlerImpl implements AuthenticationFailureHandler {
 
 	@Override
