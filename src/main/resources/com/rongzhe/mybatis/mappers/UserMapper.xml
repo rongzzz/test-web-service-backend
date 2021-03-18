@@ -5,10 +5,10 @@
 	<!-- type="com.rongzhe.demo.dao.UserDao"> -->
 	<!-- </resultMap> -->
 
-	<select id="getAll" resultType="com.rongzhe.demo.dao.User">
+	<select id="getAll" resultType="com.rongzhe.demo.entitiy.User">
 		SELECT * FROM sys_user
 	</select>
-	<select id="getOneByAccount" resultType="com.rongzhe.demo.dao.User">
+	<select id="getOneByAccount" resultType="com.rongzhe.demo.entitiy.User">
 		SELECT * FROM sys_user WHERE account = #{account}
 	</select>
 </mapper>
