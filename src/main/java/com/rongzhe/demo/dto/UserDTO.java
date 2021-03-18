@@ -1,6 +1,6 @@
 package com.rongzhe.demo.dto;
 
-import com.rongzhe.demo.dao.User;
+import com.rongzhe.demo.entitiy.User;
 
 public class UserDTO {
 
