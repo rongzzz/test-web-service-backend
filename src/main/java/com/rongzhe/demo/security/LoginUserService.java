@@ -21,7 +21,7 @@ public class LoginUserService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		System.out.println("LoginUserService loadUserByUsername " + username);
 
-		final com.rongzhe.demo.dao.User user = userMapper.getOneByAccount(username);
+		final com.rongzhe.demo.entitiy.User user = userMapper.getOneByAccount(username);
 
 		return new User(user.getAccount(), user.getPassword(), Collections.emptyList());
 	}

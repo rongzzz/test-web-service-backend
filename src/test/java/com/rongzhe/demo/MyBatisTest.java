@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rongzhe.demo.dao.User;
+import com.rongzhe.demo.entitiy.User;
 import com.rongzhe.demo.mappers.UserMapper;
 
 @SpringBootTest

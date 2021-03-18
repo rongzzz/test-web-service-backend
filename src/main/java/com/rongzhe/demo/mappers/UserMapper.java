@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.rongzhe.demo.dao.User;
+import com.rongzhe.demo.entitiy.User;
 
 @Mapper
 public interface UserMapper {

@@ -15,8 +15,8 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rongzhe.demo.dao.User;
 import com.rongzhe.demo.dto.UserDTO;
+import com.rongzhe.demo.entitiy.User;
 import com.rongzhe.demo.mappers.UserMapper;
 
 @Service
