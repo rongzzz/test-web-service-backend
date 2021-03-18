@@ -1,5 +1,7 @@
 package com.rongzhe.demo.dto;
 
+import com.rongzhe.demo.dao.UserDAO;
+
 public class UserDTO {
 
 	private String id;
@@ -28,6 +30,14 @@ public class UserDTO {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public static UserDTO transferToDTO(UserDAO userDAO) {
+		final UserDTO userDTO = new UserDTO();
+		userDTO.setId(userDAO.getId());
+		userDTO.setAccount(userDAO.getAccount());
+		userDTO.setPassword(userDAO.getPassword());
+		return userDTO;
 	}
 
 }
