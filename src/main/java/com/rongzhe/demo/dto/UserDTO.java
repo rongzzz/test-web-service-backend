@@ -1,6 +1,6 @@
 package com.rongzhe.demo.dto;
 
-import com.rongzhe.demo.dao.UserDAO;
+import com.rongzhe.demo.dao.User;
 
 public class UserDTO {
 
@@ -32,11 +32,11 @@ public class UserDTO {
 		this.password = password;
 	}
 
-	public static UserDTO transferToDTO(UserDAO userDAO) {
+	public static UserDTO transferToDTO(User user) {
 		final UserDTO userDTO = new UserDTO();
-		userDTO.setId(userDAO.getId());
-		userDTO.setAccount(userDAO.getAccount());
-		userDTO.setPassword(userDAO.getPassword());
+		userDTO.setId(user.getId());
+		userDTO.setAccount(user.getAccount());
+		userDTO.setPassword(user.getPassword());
 		return userDTO;
 	}
 

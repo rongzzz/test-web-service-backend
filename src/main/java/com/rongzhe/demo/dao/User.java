@@ -1,6 +1,11 @@
 package com.rongzhe.demo.dao;
 
-public class UserDAO {
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "sys_user")
+public class User {
 
 	private String id;
 	private String account;
