@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rongzhe.demo.dao.UserDAO;
+import com.rongzhe.demo.entitiy.User;
 import com.rongzhe.demo.mappers.UserMapper;
 
 @SpringBootTest
@@ -34,7 +34,7 @@ public class MyBatisTest {
 //			}
 			final SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 			final SqlSession session = sqlSessionFactory.openSession();
-			final List<UserDAO> users = session.getMapper(UserMapper.class).getAll();
+			final List<User> users = session.getMapper(UserMapper.class).getAll();
 			final ObjectMapper om = new ObjectMapper();
 			System.out.println("test get user : " + om.writeValueAsString(users));
 			session.close();
