@@ -8,6 +8,7 @@
   - servlet
   - filiter
   - Spring Security
+  - Spring Data JPA
   
   
 ## Reference

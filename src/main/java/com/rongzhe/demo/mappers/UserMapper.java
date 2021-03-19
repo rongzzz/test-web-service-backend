@@ -4,15 +4,15 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.rongzhe.demo.dao.UserDAO;
+import com.rongzhe.demo.entitiy.User;
 
 @Mapper
 public interface UserMapper {
 
-	List<UserDAO> getAll();
+	List<User> getAll();
 
 	// UserDao getOne(Long id);
 
-	UserDAO getOneByAccount(String account);
+	User getOneByAccount(String account);
 
 }

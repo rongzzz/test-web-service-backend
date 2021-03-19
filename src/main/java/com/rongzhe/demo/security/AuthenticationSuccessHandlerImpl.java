@@ -15,8 +15,8 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.rongzhe.demo.dao.UserDAO;
 import com.rongzhe.demo.dto.UserDTO;
+import com.rongzhe.demo.entitiy.User;
 import com.rongzhe.demo.mappers.UserMapper;
 
 @Service
@@ -33,7 +33,7 @@ public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHa
 			throws IOException, ServletException {
 		final String account = authentication.getName();
 		final Collection<?> collection = authentication.getAuthorities();
-		final UserDAO userDAO = userMapper.getOneByAccount(account);
+		final User userDAO = userMapper.getOneByAccount(account);
 		final UserDTO userDTO = UserDTO.transferToDTO(userDAO);
 		// TODO add authority
 		final String authority = collection.iterator().hasNext() ? collection.iterator().next().toString() : null;

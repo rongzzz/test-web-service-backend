@@ -1,12 +1,16 @@
 package com.rongzhe.demo.dto;
 
-import com.rongzhe.demo.dao.UserDAO;
+import java.util.List;
+
+import com.rongzhe.demo.entitiy.User;
 
 public class UserDTO {
 
 	private String id;
 	private String account;
 	private String password;
+	private UserDetailDTO userDetail;
+	private List<UserEmailDTO> userEmails;
 
 	public String getId() {
 		return id;
@@ -32,11 +36,27 @@ public class UserDTO {
 		this.password = password;
 	}
 
-	public static UserDTO transferToDTO(UserDAO userDAO) {
+	public UserDetailDTO getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(UserDetailDTO userDetail) {
+		this.userDetail = userDetail;
+	}
+
+	public List<UserEmailDTO> getUserEmails() {
+		return userEmails;
+	}
+
+	public void setUserEmails(List<UserEmailDTO> userEmails) {
+		this.userEmails = userEmails;
+	}
+
+	public static UserDTO transferToDTO(User user) {
 		final UserDTO userDTO = new UserDTO();
-		userDTO.setId(userDAO.getId());
-		userDTO.setAccount(userDAO.getAccount());
-		userDTO.setPassword(userDAO.getPassword());
+		userDTO.setId(user.getId());
+		userDTO.setAccount(user.getAccount());
+		userDTO.setPassword(user.getPassword());
 		return userDTO;
 	}
 

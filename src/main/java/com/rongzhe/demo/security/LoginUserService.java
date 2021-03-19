@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.rongzhe.demo.dao.UserDAO;
 import com.rongzhe.demo.mappers.UserMapper;
 
 @Service
@@ -22,9 +21,9 @@ public class LoginUserService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		System.out.println("LoginUserService loadUserByUsername " + username);
 
-		final UserDAO userDAO = userMapper.getOneByAccount(username);
+		final com.rongzhe.demo.entitiy.User user = userMapper.getOneByAccount(username);
 
-		return new User(userDAO.getAccount(), userDAO.getPassword(), Collections.emptyList());
+		return new User(user.getAccount(), user.getPassword(), Collections.emptyList());
 	}
 
 }
