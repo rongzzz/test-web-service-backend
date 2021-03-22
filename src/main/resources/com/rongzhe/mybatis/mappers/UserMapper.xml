@@ -11,4 +11,25 @@
 	<select id="getOneByAccount" resultType="com.rongzhe.demo.entitiy.User">
 		SELECT * FROM sys_user WHERE account = #{account}
 	</select>
+	<select id="getUserReportData" resultType="com.rongzhe.demo.dto.UserReportDTO">
+		select
+			su.account,
+			sud.display_name,
+			sud.first_name,
+			sud.last_name,
+			string_agg(sue.email, ',') as emails
+		from
+			sys_user su
+		left join sys_user_detail sud on
+			su.user_detail_id = sud.id
+		left join sys_user_email sue on
+			sue.user_id = su.id
+		group by
+			account,
+			display_name,
+			first_name,
+			last_name
+		order by
+			account	
+	</select>
 </mapper>
