@@ -63,7 +63,6 @@ public class JasperReportServlet extends HttpServlet {
 			exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
 			JasperExportManager.exportReportToPdfStream(jasperPrint, oStream);
 
-			// exporter.exportReport();
 			bytes = oStream.toByteArray();
 
 			if ("Excel".equals(reportType)) {
