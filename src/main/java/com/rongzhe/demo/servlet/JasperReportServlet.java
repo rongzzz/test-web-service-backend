@@ -52,6 +52,8 @@ public class JasperReportServlet extends HttpServlet {
 		final ServletOutputStream ouputStream = response.getOutputStream();
 		try (final ByteArrayOutputStream oStream = new ByteArrayOutputStream()) {
 			final Map<String, Object> parameters = new HashMap<>();
+			parameters.put("title", "User List");
+			parameters.put("createTime", date);
 			@SuppressWarnings("rawtypes")
 			final JRAbstractExporter exporter;
 			if ("Excel".equals(reportType)) {

@@ -2,6 +2,12 @@
 <!-- Created with Jaspersoft Studio version 6.8.0.final using JasperReports Library version 6.8.0-2ed8dfabb690ff337a5797129f2cd92902b0c87b  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="test-20210318" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fc64ed82-927a-4087-8d2f-577bf92e39bb">
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<parameter name="title" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{title}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="createTime" class="java.util.Date">
+		<defaultValueExpression><![CDATA["Create Time :" + $P{createTime}.toLocaleString()]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -10,6 +16,9 @@
 	<field name="lastName" class="java.lang.String"/>
 	<field name="firstName" class="java.lang.String"/>
 	<field name="emails" class="java.lang.String"/>
+	<variable name="emailsWrap" class="java.lang.String">
+		<variableExpression><![CDATA[$F{emails}.replace(",","\n")]]></variableExpression>
+	</variable>
 	<group name="GroupHeader1">
 		<groupHeader>
 			<band height="40">
@@ -90,46 +99,73 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="30" splitType="Stretch">
+		<band height="32" splitType="Stretch">
 			<property name="com.jaspersoft.studio.layout"/>
-			<staticText>
-				<reportElement x="180" y="0" width="201" height="30" uuid="0744d859-dd2a-40ef-b861-7cc0cdfd9f28"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[User List]]></text>
-			</staticText>
+			<textField>
+				<reportElement x="230" y="0" width="100" height="30" uuid="e2ec2bca-c686-4e27-8aa1-a70a3302a5de"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="333" y="0" width="238" height="30" uuid="15c0766f-7c43-477d-bc19-a250b56bb016"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="kaiu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["建立時間 :"+$P{createTime}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<textField>
 				<reportElement x="-19" y="0" width="100" height="30" uuid="efefcb18-8ae1-46f2-934b-71b15e4c852f"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{account}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="280" y="0" width="100" height="30" uuid="3e0d1068-7f29-465e-8b44-9be794837ae3"/>
+				<reportElement x="281" y="0" width="100" height="30" uuid="3e0d1068-7f29-465e-8b44-9be794837ae3"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{displayName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="380" y="0" width="100" height="30" uuid="a3c4a32b-9e8d-44d4-a403-df6849aa4082"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{emails}]]></textFieldExpression>
-			</textField>
-			<textField>
 				<reportElement x="81" y="0" width="100" height="30" uuid="710b045e-98a5-42ba-9520-09ff06a46d7a"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="180" y="0" width="100" height="30" uuid="4c64b4c8-537f-4745-9979-4d84650e1caf"/>
+				<reportElement x="181" y="0" width="100" height="30" uuid="4c64b4c8-537f-4745-9979-4d84650e1caf"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="481" y="0" width="100" height="30" uuid="92b60b33-d272-4ce7-a021-87dd2414a511"/>
+				<reportElement x="481" y="0" width="94" height="30" uuid="92b60b33-d272-4ce7-a021-87dd2414a511"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{displayName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="381" y="0" width="100" height="30" uuid="54e491f9-3641-460a-b338-074331a13b9c"/>
+				<box>
+					<pen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{emailsWrap}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
